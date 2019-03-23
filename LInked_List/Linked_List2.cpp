@@ -1,10 +1,10 @@
 #include <iostream>
 using namespace std;
 
-Struct node
+struct node
 {
 	int data;
-	node *link;
+	node *next;
 };
 struct node *head; //a global variable
 
@@ -13,12 +13,24 @@ void Insert(int val)
 	//now we need to create a new node.
 	node *temp = new node();
 	temp->data = val; //store the val in this new node
-	temp->link = NULL; //now this will point to NULL
+	temp->next = NULL; //now this will point to NULL
 	//now we have to make head to point to this node
 	//this is when our list is empty
 	if(head != NULL)
-		temp->link  = head;
+		temp->next  = head;
 	head = temp;
+}
+
+void Printy()
+{
+	node *temp = head;
+	cout<<"the elements of the list are: ";
+	while(temp != NULL)
+	{
+		cout<<temp->data<<" ";
+		temp = temp->next;
+	}
+	cout<<endl;
 }
 
 int main()
@@ -29,9 +41,10 @@ int main()
 	cin>>n;
 	for (int i = 0; i < n; ++i)
 	{
-		cout<<"enter the element you want to add to the end of the list\n";
+		cout<<"enter the element\n";
 		cin>>val;
-		Insert(val); //this will insert val at the end of this list
+		Insert(val); //this will insert val at the starting of this list
+		Printy();
 	}
 
 }
