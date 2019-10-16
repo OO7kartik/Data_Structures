@@ -1,5 +1,7 @@
+// to run type "gcc treeTraversal.c tree.c stack.c"
+// then run the executable file and enter your input
+
 #include <stdio.h>
-#include <stdarg.h>
 
 #include "tree.h"
 #include "stack.h"
@@ -16,19 +18,31 @@ void printstack(node *stack)
 
 int main()
 {
-  // FILE *output = freopen("out.txt", "w", stdout);
-  // FILE *input = freopen("in.txt", "r", stdin);
-
   tree *root = NULL;
 
   int n, val;
+  printf("Enter number of nodes: ");
   scanf("%d", &n);
 
   for (int i = 0; i < n; i++)
   {
+    printf("Enter node %d: ", i+1);
     scanf("%d", &val);
     root = insert(root, val);
   }
+
+  //using binary search tree.
+  //for an input of 2 1 4 3 5
+  //           2
+  //         /  \
+  //        1    3 
+  //            / \
+  //           4   5 
+
+  // inorder: 1 2 3 4 5
+  // preorder: 2 1 4 3 5
+  // postorder: 1 3 5 4 2
+
 
   printf("inorder: ");
   inorder(root);
@@ -42,7 +56,5 @@ int main()
   postorder(root);
   printf("\n");
 
-  // fclose(output);
-  // fclose(input);
   return 0;
 }
