@@ -1,0 +1,12 @@
+online: processes its input piece-by-piece in a serial fashion
+		eg.insertion sort
+
+offline: the whole problem data is required from the beginning is required to output an answer.
+		eg.selection sort
+
+red-black binary trees
+time complexity analysis:
+
+
+tango trees
+time complexity analysis:
