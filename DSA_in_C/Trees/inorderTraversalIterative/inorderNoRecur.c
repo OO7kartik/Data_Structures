@@ -14,36 +14,53 @@ void printstack(node *stack)
   printf("\n");
 }
 
-void inorder(tree *root)
-{
-
+void inorder(tree *root) {
   node *stack = NULL;
   push(root, &stack);
-  int ok = 1;
-  while (!isempty(stack))
-  {
-    if (stack->top->left && ok)
-    {
-      push(stack->top->left, &stack);
-    }
-    else
-    {
-      ok = 0;
-      printf("%d ", stack->top->data);
-      tree *adr;
-      if (stack->top->right)
-      {
-        adr = stack->top->right;
-        pop(&stack);
-        push(adr, &stack);
-      }
-      else
-      {
-        pop(&stack);
-      }
+  int ok  = 1;
+  while(ok) {
+    if(root) {
+      push(root, &stack);
+      root = root->left;
+    } else {
+      if(!isempty(stack)) {
+        root = pop(&stack);
+        printf("%d ", root->data);
+        root = root->right;
+      } else ok = 0;
     }
   }
 }
+
+// void inorder(tree *root)
+// {
+//   node *stack = NULL;
+//   push(root, &stack);
+//   int ok = 1;
+//   while (!isempty(stack))
+//   {
+//     if (stack->top->left && ok)
+//     {
+//       push(stack->top->left, &stack);
+//     }
+//     else
+//     {
+//       ok = 0;
+//       printf("%d ", stack->top->data);
+//       tree *adr;
+//       if (stack->top->right)
+//       {
+//         adr = stack->top->right;
+//         pop(&stack);
+//         push(adr, &stack);
+//       }
+//       else
+//       {
+//         pop(&stack);
+//       }
+//     }
+//   }
+// }
 
 int main()
 {
@@ -68,3 +85,40 @@ int main()
   // fclose(input);
   return 0;
 }
+
+
+
+
+
+
+
+
+
+// void inOrder(struct tNode *root) 
+// { 
+//   struct tNode *current = root; 
+//   struct sNode *s = NULL;  /* Initialize stack s */
+//   bool done = 0; 
+  
+//   while (!done) 
+//   { 
+//     if(current !=  NULL) 
+//     { 
+//       push(&s, current);                                                
+//       current = current->left;   
+//     } 
+        
+//     else                                                              
+//     { 
+//       if (!isEmpty(s)) 
+//       { 
+//         current = pop(&s); 
+//         printf("%d ", current->data); 
+
+//         current = current->right; 
+//       } 
+//       else
+//         done = 1;  
+//     } 
+//   }  
+// }  

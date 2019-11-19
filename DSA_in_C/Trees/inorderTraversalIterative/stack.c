@@ -26,15 +26,17 @@ void push(tree *adr, node **st)
   (*st) = nn;
 }
 
-void pop(node **st)
+tree *pop(node **st)
 {
   if (isempty(*st))
   {
     printf("Stack empty can't pop");
   }
   node *temp = (*st);
+  tree *toReturn = temp->top;
   (*st) = (*st)->next;
   free(temp);
+  return toReturn;
 }
 
 void display(node *st)
